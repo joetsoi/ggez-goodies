@@ -113,7 +113,9 @@ impl<C, Ev> SceneStack<C, Ev> {
                 None
             }
             SceneSwitch::PushMultiple(s) => {
-                self.scenes.extend(s.iter());
+                for scene in s {
+                    self.push(scene);
+                }
                 None
             }
             SceneSwitch::Replace(s) => {
