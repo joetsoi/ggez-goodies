@@ -21,6 +21,7 @@ use ggez;
 pub enum SceneSwitch<C, Ev> {
     None,
     Push(Box<Scene<C, Ev>>),
+    PushMultiple(Vec<Box<Scene<C, Ev>>>),
     Replace(Box<Scene<C, Ev>>),
     Pop,
 }
@@ -109,6 +110,10 @@ impl<C, Ev> SceneStack<C, Ev> {
             }
             SceneSwitch::Push(s) => {
                 self.push(s);
+                None
+            }
+            SceneSwitch::PushMultiple(s) => {
+                self.scenes.extend(s.iter());
                 None
             }
             SceneSwitch::Replace(s) => {
