@@ -110,7 +110,7 @@ impl<C, Ev> SceneStack<C, Ev> {
                 Some(s)
             }
             SceneSwitch::PopMultiple(c) => {
-                let s = None;
+                let mut s = None;
                 for i in (0..c) {
                     s = Some(self.pop());
                 }
