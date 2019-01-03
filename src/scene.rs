@@ -24,6 +24,7 @@ pub enum SceneSwitch<C, Ev> {
     PushMultiple(Vec<Box<Scene<C, Ev>>>),
     Replace(Box<Scene<C, Ev>>),
     Pop,
+    PopMultiple(u32),
 }
 
 /// A trait for you to implement on a scene.
@@ -107,6 +108,13 @@ impl<C, Ev> SceneStack<C, Ev> {
             SceneSwitch::Pop => {
                 let s = self.pop();
                 Some(s)
+            }
+            SceneSwitch::PopMultiple(c) => {
+                let s = None;
+                for i in (0..c) {
+                    s = Some(self.pop());
+                }
+                s
             }
             SceneSwitch::Push(s) => {
                 self.push(s);
