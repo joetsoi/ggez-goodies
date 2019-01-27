@@ -10,5 +10,5 @@ readme = "README.md"
 
 
 [dependencies]
-ggez = "0.4"
+ggez = { git = "https://github.com/ggez/ggez" }
 rand = "0.4"
