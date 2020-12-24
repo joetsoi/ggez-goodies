@@ -11,7 +11,8 @@ readme = "README.md"
 
 
 [dependencies]
-ggez = "0.5.0-rc.1"
+# until a new version is released the devel branch of ggez is needed, see https://github.com/ggez/ggez/issues/843
+ggez = { git = "https://github.com/ggez/ggez", branch = "devel" }
 nalgebra-glm = "0.3.0"
 rand = "0.4"
 
